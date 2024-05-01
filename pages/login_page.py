@@ -55,6 +55,8 @@ class Login_page(Base):
         self.driver.get(self.url)
         # Максимизация окна браузера
         self.driver.maximize_window()
+        # Получение текущей url в терминале
+        self.get_current_url()
         # Ввод имени пользователя и пароля
         self.input_user_name("standard_user")
         self.input_password("secret_sauce")

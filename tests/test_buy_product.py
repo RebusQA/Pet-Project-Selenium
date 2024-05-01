@@ -1,10 +1,11 @@
 
+import time
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from pages.login_page import Login_page
 from selenium.webdriver.chrome.options import Options
+from pages.main_page import Main_page
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
@@ -22,9 +23,8 @@ def test_buy_product():
     login = Login_page(driver)
     login.authorization()
 
+    # Создам экземпляр класса Main_page и вызываю его метод add_product
+    mp = Main_page(driver)
+    mp.add_product()
 
-
-
-
-
-
+    time.sleep(7)

@@ -18,7 +18,7 @@ class Base():
         print("Current url is: " + get_url)
 
 
-    """ Метод, который будет проверять элементы - "слова" """
+    """ Метод, который будет сверять элементы / парсить """
 
     def assert_word(self, word, result):
 

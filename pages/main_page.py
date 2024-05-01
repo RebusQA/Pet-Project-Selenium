@@ -2,7 +2,7 @@
 from selenium.webdriver.common.by import By
 from base.base_class import Base
 
-""" Создал класса Главной страницы """
+""" Создал класс Главной страницы """
 
 class Main_page(Base):
 
@@ -44,7 +44,7 @@ class Main_page(Base):
 
     """ Methods """
 
-    # Метод авторизации пользователя
+    # Метод добавления товара в корзину
     def add_product(self):
 
         # Получение текущей url в терминале

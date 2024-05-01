@@ -13,5 +13,15 @@ class Base():
     """ Метод, который будет возвращать текущую url """
 
     def get_current_url(self):
+
         get_url = self.driver.current_url
         print("Current url is: " + get_url)
+
+
+    """ Метод, который будет проверять элементы - "слова" """
+
+    def assert_word(self, word, result):
+
+        value_word = word.text
+        assert value_word == result
+        print("Value word is ok")

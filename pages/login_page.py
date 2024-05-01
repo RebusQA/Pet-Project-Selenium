@@ -16,9 +16,12 @@ class Login_page(Base):
     """ Locators """
 
     # Локаторы элементов страницы
+
     user_name = "//input[@id='user-name']"
     password = "//input[@id='password']"
     login_button = "//input[@id='login-button']"
+    main_word = "//span[@class='title']"
+
 
     """ Getters """
 
@@ -29,6 +32,9 @@ class Login_page(Base):
         return self.driver.find_element(By.XPATH, self.password)
     def get_login_button(self):
         return self.driver.find_element(By.XPATH, self.login_button)
+    def get_main_word(self):
+        return self.driver.find_element(By.XPATH, self.main_word)
+
 
     """ Actions """
 
@@ -44,7 +50,7 @@ class Login_page(Base):
     def click_login_button(self):
         # Нажатие на кнопку входа
         self.get_login_button().click()
-        print("Input login_button")
+        print("Click login button")
 
 
     """ Methods """
@@ -62,4 +68,6 @@ class Login_page(Base):
         self.input_password("secret_sauce")
         # Нажатие кнопки входа
         self.click_login_button()
+        # Проверка того, что авторизация прошла успешно, по элементу "Products"
+        self.assert_word(self.get_main_word(), "Products")
 

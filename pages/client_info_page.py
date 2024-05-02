@@ -2,6 +2,8 @@
 from selenium.webdriver.common.by import By
 from base.base_class import Base
 
+""" Создал класс страницы внесения данных пользователя """
+
 class Client_info_page(Base):
 
     def __init__(self, driver):
@@ -24,6 +26,7 @@ class Client_info_page(Base):
     """ Getters """
 
     # Получение элементов страницы
+
     def get_first_name(self):
         return self.driver.find_element(By.XPATH, self.first_name)
     def get_last_name(self):
@@ -45,16 +48,16 @@ class Client_info_page(Base):
         print("Input first name")
 
     def input_last_name(self, last_name):
-        # Ввод пароля
+        # Ввод фамилии
         self.get_last_name().send_keys(last_name)
         print("Input last name")
 
     def input_postal_code(self, postal_code):
-        # Ввод пароля
+        # Ввод индекса
         self.get_postal_code().send_keys(postal_code)
         print("Input postal code")
     def click_continue_button(self):
-        # Нажатие на кнопку входа
+        # Нажатие на кнопку continue
         self.get_continue_button().click()
         print("Click continue button")
 

@@ -4,6 +4,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
 from pages.cart_page import Cart_page
+from pages.client_info_page import Client_info_page
 from pages.login_page import Login_page
 from selenium.webdriver.chrome.options import Options
 from pages.main_page import Main_page
@@ -32,6 +33,10 @@ def test_buy_product():
     # Создам экземпляр класса Cart_page и вызываю его метод product_confirm
     cp = Cart_page(driver)
     cp.product_confirm()
+
+    # Создам экземпляр класса Client_info_page и вызываю его метод client_info_confirm
+    cip = Client_info_page(driver)
+    cip.client_info_confirm()
 
 
     time.sleep(7)

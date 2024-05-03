@@ -1,5 +1,5 @@
 
-import time
+import allure
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
@@ -15,14 +15,14 @@ options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
 
 
-def test_buy_product():
+@allure.description("Test buy product")
+def test_buy_product(set_up):
 
     # Очистка терминала от лишних сообщений
     options = Options()
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
     driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
-    print("\nStart Test")
 
     # Создал экземпляр класса Login_page и вызываю его метод authorization
     login = Login_page(driver)
@@ -47,6 +47,3 @@ def test_buy_product():
     # Создал экземпляр класса Finish_page и вызываю его метод finish
     fp = Finish_page(driver)
     fp.finish()
-
-
-    time.sleep(7)

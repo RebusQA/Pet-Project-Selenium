@@ -1,4 +1,5 @@
 
+import allure
 from selenium.webdriver.common.by import By
 from base.base_class import Base
 
@@ -47,9 +48,11 @@ class Main_page(Base):
     # Метод добавления товара в корзину
     def add_product(self):
 
-        # Получение текущей url в терминале
-        self.get_current_url()
-        # Добавление товара в корзину
-        self.click_add_product_1()
-        # Вход в корзину
-        self.click_cart()
+        # Указываю что будет идти шаг Allure
+        with allure.step("Add product"):
+            # Получение текущей url в терминале
+            self.get_current_url()
+            # Добавление товара в корзину
+            self.click_add_product_1()
+            # Вход в корзину
+            self.click_cart()

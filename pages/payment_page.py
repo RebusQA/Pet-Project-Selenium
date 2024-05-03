@@ -1,4 +1,5 @@
 
+import allure
 from selenium.webdriver.common.by import By
 from base.base_class import Base
 
@@ -40,7 +41,9 @@ class Payment_page(Base):
     # Метод завершения оплаты и нажатие на кнопку finish
     def payment(self):
 
-        # Получение текущей url в терминале
-        self.get_current_url()
-        # Нажатие на кнопку finish
-        self.click_finish_button()
+        # Указываю что будет идти шаг Allure
+        with allure.step("Payment"):
+            # Получение текущей url в терминале
+            self.get_current_url()
+            # Нажатие на кнопку finish
+            self.click_finish_button()

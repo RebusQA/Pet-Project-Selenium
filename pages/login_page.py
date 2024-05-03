@@ -1,6 +1,9 @@
 
+import allure
 from selenium.webdriver.common.by import By
 from base.base_class import Base
+from utilities.logger import Logger
+
 
 class Login_page(Base):
 
@@ -57,17 +60,23 @@ class Login_page(Base):
 
     # Метод авторизации пользователя
     def authorization(self):
-        # Открытие страницы
-        self.driver.get(self.url)
-        # Максимизация окна браузера
-        self.driver.maximize_window()
-        # Получение текущей url в терминале
-        self.get_current_url()
-        # Ввод имени пользователя и пароля
-        self.input_user_name("standard_user")
-        self.input_password("secret_sauce")
-        # Нажатие кнопки входа
-        self.click_login_button()
-        # Проверка того, что авторизация прошла успешно, по элементу "Products"
-        self.assert_word(self.get_main_word(), "Products")
 
+        # Указываю что будет идти шаг Allure
+        with allure.step("Authorization"):
+            # Обращаюсь к классу Logger для запуска логирования теста
+            Logger.add_start_step(method="authorization")
+            # Открытие страницы
+            self.driver.get(self.url)
+            # Максимизация окна браузера
+            self.driver.maximize_window()
+            # Получение текущей url в терминале
+            self.get_current_url()
+            # Ввод имени пользователя и пароля
+            self.input_user_name("standard_user")
+            self.input_password("secret_sauce")
+            # Нажатие кнопки входа
+            self.click_login_button()
+            # Проверка того, что авторизация прошла успешно, по элементу "Products"
+            self.assert_word(self.get_main_word(), "Products")
+            # Обращаюсь к классу Logger для завершения логирования теста
+            Logger.add_end_step(url=self.driver.current_url, method="authorization")

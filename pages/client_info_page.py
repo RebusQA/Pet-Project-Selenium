@@ -7,15 +7,8 @@ from base.base_class import Base
 
 class Client_info_page(Base):
 
-    def __init__(self, driver):
-
-        # Инициализация класса-родителя
-        super().__init__(driver)
-        self.driver = driver
 
     """ Locators """
-
-    # Локаторы элементов страницы
 
     first_name = "//input[@id='first-name']"
     last_name = "//input[@id='last-name']"
@@ -25,8 +18,6 @@ class Client_info_page(Base):
 
 
     """ Getters """
-
-    # Получение элементов страницы
 
     def get_first_name(self):
         return self.driver.find_element(By.XPATH, self.first_name)
@@ -42,41 +33,30 @@ class Client_info_page(Base):
 
     """ Actions """
 
-    # Действия с элементами страницы
     def input_first_name(self, first_name):
-        # Ввод имени пользователя
         self.get_first_name().send_keys(first_name)
         print("Input first name")
 
     def input_last_name(self, last_name):
-        # Ввод фамилии
         self.get_last_name().send_keys(last_name)
         print("Input last name")
 
     def input_postal_code(self, postal_code):
-        # Ввод индекса
         self.get_postal_code().send_keys(postal_code)
         print("Input postal code")
     def click_continue_button(self):
-        # Нажатие на кнопку continue
         self.get_continue_button().click()
         print("Click continue button")
 
 
     """ Methods """
 
-    # Метод авторизации пользователя
     def client_info_confirm(self):
 
-        # Указываю что будет идти шаг Allure
         with allure.step("Client info confirm"):
-            # Получение текущей url в терминале
             self.get_current_url()
-            # Ввод имени, фамилии и индекса
             self.input_first_name("Alex")
             self.input_last_name("Mahortov")
             self.input_postal_code("333777")
-            # Нажатие кнопки continue
             self.click_continue_button()
-            # Проверка того, что внесение данных пользователя прошла успешно, по элементу "Description"
             self.assert_word(self.get_main_word(), "Description")

@@ -24,26 +24,21 @@ def test_buy_product(set_up):
 
     driver = webdriver.Chrome(options=options, service=ChromeService(ChromeDriverManager().install()))
 
-    # Создал экземпляр класса Login_page и вызываю его метод authorization
+    # # Вызов методов с шагами теста
     login = Login_page(driver)
     login.authorization()
 
-    # Создал экземпляр класса Main_page и вызываю его метод add_product
     mp = Main_page(driver)
     mp.add_product()
 
-    # Создал экземпляр класса Cart_page и вызываю его метод product_confirm
     cp = Cart_page(driver)
     cp.product_confirm()
 
-    # Создал экземпляр класса Client_info_page и вызываю его метод client_info_confirm
     cip = Client_info_page(driver)
     cip.client_info_confirm()
 
-    # Создал экземпляр класса Payment_page и вызываю его метод payment
     pp = Payment_page(driver)
     pp.payment()
 
-    # Создал экземпляр класса Finish_page и вызываю его метод finish
     fp = Finish_page(driver)
     fp.finish()

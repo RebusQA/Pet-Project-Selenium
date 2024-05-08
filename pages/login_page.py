@@ -7,14 +7,7 @@ from utilities.logger import Logger
 
 class Login_page(Base):
 
-    # URL страницы авторизации
     url = "https://www.saucedemo.com/"
-
-    def __init__(self, driver):
-
-        # Инициализация класса-родителя
-        super().__init__(driver)
-        self.driver = driver
 
     """ Locators """
 
@@ -43,15 +36,12 @@ class Login_page(Base):
 
     # Действия с элементами страницы
     def input_user_name(self, user_name):
-        # Ввод имени пользователя
         self.get_user_name().send_keys(user_name)
         print("Input user name")
     def input_password(self, password):
-        # Ввод пароля
         self.get_password().send_keys(password)
         print("Input password")
     def click_login_button(self):
-        # Нажатие на кнопку входа
         self.get_login_button().click()
         print("Click login button")
 
@@ -61,7 +51,7 @@ class Login_page(Base):
     # Метод авторизации пользователя
     def authorization(self):
 
-        # Указываю что будет идти шаг Allure
+        # Подключаю Allure
         with allure.step("Authorization"):
             # Обращаюсь к классу Logger для запуска логирования теста
             Logger.add_start_step(method="authorization")

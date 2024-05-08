@@ -7,43 +7,28 @@ from base.base_class import Base
 
 class Payment_page(Base):
 
-    def __init__(self, driver):
-
-        # Инициализация класса-родителя
-        super().__init__(driver)
-        self.driver = driver
-
     """ Locators """
-
-    # Локаторы элементов страницы
 
     finish_button = "//button[@id='finish']"
 
 
     """ Getters """
 
-    # Получение элементов страницы
     def get_finish_button(self):
         return self.driver.find_element(By.XPATH, self.finish_button)
 
 
     """ Actions """
 
-    # Действия с элементами страницы
     def click_finish_button(self):
-        # Нажатие на кнопку завершения покупки
         self.get_finish_button().click()
         print("Click finish button")
 
 
     """ Methods """
 
-    # Метод завершения оплаты и нажатие на кнопку finish
     def payment(self):
 
-        # Указываю что будет идти шаг Allure
         with allure.step("Payment"):
-            # Получение текущей url в терминале
             self.get_current_url()
-            # Нажатие на кнопку finish
             self.click_finish_button()
